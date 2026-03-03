@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: bro-barber-backend
+  profiles:
+    active: ${SPRING_PROFILE:dev}
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: UTC
+
+# Swagger/OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    doc-expansion: none
+    display-request-duration: true
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# Application Settings
+app:
+  jwt:
+    secret: ${JWT_SECRET:changeme-this-should-be-a-very-long-secure-secret-key-at-least-256-bits}
+    access-token-expiration-ms: 900000 # 15 minutes
+    refresh-token-expiration-ms: 2592000000 # 30 days
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://localhost:5173}
+  rate-limit:
+    guest:
+      requests-per-minute: 20
+    registered:
+      requests-per-minute: 100

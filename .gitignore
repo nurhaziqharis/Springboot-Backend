@@ -1,9 +1,46 @@
+# System Files
 .DS_Store
-.idea
-.claude
-.env
-*.env
-*.env.*
 Thumbs.db
+*.swp
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# AI Tools
+.claude/
+.gemini/
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.env
+.env.local
+.env.dev
+.env.prod
+.env.staging
+.env.test
+secrets/
+*.pem
+*.key
+*.crt
+config.local.md
+
+# Dependencies & Build
+node_modules/
+dist/
+build/
+bin/
+out/
+target/
+
+# Logs
 *.log
+logs/
+
+# Documentation (Optional - keeping per current state)
 requirement.md
